@@ -1,0 +1,39 @@
+@startuml
+
+title Classes - Inheritance and composition
+
+class Employee{
+    id: int
+    name: String
+    Employee(id, name)
+}
+
+class SalaryEmployee{
+    weekly_salary: float
+    SalaryEmployee(id, name, weekly_salary)
+    +calculate_payroll(): float
+}
+
+class HourlyEmployee{
+    hours_worked: int
+    hour_rate: float
+    HourlyEmployee(id, name, hours_worked, hour_rate)
+    +calculate_payroll(): float
+}
+
+class CommissionEmployee{
+    commission: int
+    CommissionEmployee(id, name, weekly_salary, commission)
+    +calculate_payroll(): float
+}
+
+class PayrollSystem{
+    +calculate_payroll(employees: Employee): void
+}
+
+Employee <|-- SalaryEmployee
+Employee <|-- HourlyEmployee
+SalaryEmployee <|-- CommissionEmployee
+PayrollSystem ..> Employee
+
+@enduml
