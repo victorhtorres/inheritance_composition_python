@@ -2,10 +2,17 @@
 
 title Classes - Inheritance and composition
 
-class Employee{
+abstract class Employee{
     id: int
     name: String
     Employee(id, name)
+    +{abstract}calculate_payroll()
+}
+
+class DisgruntledEmployee{
+    id: int
+    name: String
+    +calculate_payroll()
 }
 
 class SalaryEmployee{
@@ -28,12 +35,21 @@ class CommissionEmployee{
 }
 
 class PayrollSystem{
-    +calculate_payroll(employees: List<Employee>): void
+    +calculate_payroll(employees: List<object>): void
 }
 
 Employee <|-- SalaryEmployee
 Employee <|-- HourlyEmployee
 SalaryEmployee <|-- CommissionEmployee
 PayrollSystem ..> Employee
+PayrollSystem ..> DisgruntledEmployee
+
+note right of PayrollSystem::calculate_payroll
+  <b>Polymorphic by default</b> 
+  The objects added on the list employees
+  must be have an interface with id, name and
+  calculate_payroll method without params and no
+  return value.
+end note
 
 @enduml
