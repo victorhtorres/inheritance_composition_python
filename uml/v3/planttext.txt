@@ -1,0 +1,74 @@
+@startuml
+
+title Classes - Inheritance and composition
+
+class PayrollSystem{
+    +calculate_payroll(employees: List<Employee>): void
+}
+
+class ProductivitySystem{
+    +track(employees: List<object>, hours: int): void
+}
+
+class Employee{
+    id: int
+    name: String
+    Employee(id, name)
+}
+
+class SalaryEmployee{
+    weekly_salary: float
+    SalaryEmployee(id, name, weekly_salary)
+    +calculate_payroll(): float
+}
+
+class HourlyEmployee{
+    hours_worked: int
+    hour_rate: float
+    HourlyEmployee(id, name, hours_worked, hour_rate)
+    +calculate_payroll(): float
+}
+
+class CommissionEmployee{
+    commission: int
+    CommissionEmployee(id, name, weekly_salary, commission)
+    +calculate_payroll(): float
+}
+
+class Manager{
+    +work(hours: int): void
+}
+
+class Secretary{
+    +work(hours: int): void
+}
+
+class SalesPerson{
+   +work(hours: int): void
+}
+
+class FactoryWorker{
+    +work(hours: int): void
+}
+
+Employee <|-- SalaryEmployee
+Employee <|-- HourlyEmployee
+HourlyEmployee <|-- FactoryWorker
+SalaryEmployee <|-- CommissionEmployee
+SalaryEmployee <|-- Manager
+SalaryEmployee <|-- Secretary
+CommissionEmployee <|-- SalesPerson
+PayrollSystem ..> Employee
+ProductivitySystem ..> Manager
+ProductivitySystem ..> Secretary
+ProductivitySystem ..> FactoryWorker
+ProductivitySystem ..> SalesPerson
+
+note right of ProductivitySystem::track
+  The employees list must have only objects
+  with implemented <b>work</b> method.
+  This implementation violates the Liskov
+  substitution principle.
+end note
+
+@enduml

@@ -11,6 +11,11 @@ The HR system needs to process payroll for the company’s employees, but there 
 ![UML diagram class of v1 HR system](./uml/v1/class_diagram.png)
 
 ## v2
-The HR system ensures that the Employee class cannot be instantiated, making it abstract. The exposed method of the PayrollSystem class is now polyphomic by default. Therefore, the DisgruntledEmployee class is created, to show that inheriting from Employee is not required, to use the interface of the PayrollSystem class.
+The HR system ensures that the Employee class cannot be instantiated, making it abstract. The exposed method of the PayrollSystem class is now polyphomic by default. Therefore, the DisgruntledEmployee class is created, to show that inheriting from Employee is not required, to use the interface of the PayrollSystem class:
 
 ![UML diagram class of v2 HR system](./uml/v2/class_diagram.png)
+
+## v3
+When the HR system requires new functionality, inheritance can become difficult to understand and maintain. This is known as the class explosion problem. In this example, the HR system is expanded, adding a new function that shows productivity by roles in the company:
+
+![UML diagram class of v3 HR system](./uml/v3/class_diagram.png)
