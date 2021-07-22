@@ -19,3 +19,8 @@ The HR system ensures that the Employee class cannot be instantiated, making it 
 When the HR system requires new functionality, inheritance can become difficult to understand and maintain. This is known as the class explosion problem. In this example, the HR system is expanded, adding a new function that shows productivity by roles in the company:
 
 ![UML diagram class of v3 HR system](./uml/v3/class_diagram.png)
+
+## v4
+Multiple inheritance with diamond problem that you should to avoid.
+
+![UML diagram class of v3 HR system](./uml/v4/class_diagram.png)
