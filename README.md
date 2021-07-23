@@ -23,4 +23,9 @@ When the HR system requires new functionality, inheritance can become difficult 
 ## v4
 Multiple inheritance with diamond problem that you should to avoid.
 
-![UML diagram class of v3 HR system](./uml/v4/class_diagram.png)
+![UML diagram class of v4 HR system](./uml/v4/class_diagram.png)
+
+## v5
+Solving the diamond problem with the division of responsibilities.
+
+![UML diagram class of v5 HR system](./uml/v5/class_diagram.png)
