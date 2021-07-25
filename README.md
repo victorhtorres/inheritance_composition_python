@@ -29,3 +29,8 @@ Multiple inheritance with diamond problem that you should to avoid.
 Solving the diamond problem with the division of responsibilities.
 
 ![UML diagram class of v5 HR system](./uml/v5/class_diagram.png)
+
+## v6
+First example of composition: Now Employee **has a** Address contact.
+
+![UML diagram class of v6 HR system](./uml/v6/class_diagram.png)

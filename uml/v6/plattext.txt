@@ -1,0 +1,108 @@
+@startuml
+skinparam groupInheritance 3
+title Classes - Inheritance and composition
+
+class PayrollSystem{
+    +calculate_payroll(employees: List<Employee>): void
+}
+
+class ProductivitySystem{
+    +track(employees: List<Employee>, hours: int): void
+}
+
+class Address{
+    street: String
+    street2: String
+    city: String
+    state: String
+    zipcode: String
+    +Address(street: String, city: String,
+    state: String, zipcode: String, street2: String)
+    +__str__(): String
+}
+
+class Employee{
+    id: int
+    name: String
+    Employee(id, name)
+}
+
+class ManagerRole{
+    +work(hours: int): String
+}
+
+class SecretaryRole{
+    +work(hours: int): String
+}
+
+class SalesRole{
+    +work(hours: int): String
+}
+
+class FactoryRole{
+    +work(hours: int): String
+}
+
+class SalaryPolicy{
+    weekly_salary: float
+    +SalaryPolicy(weekly_salary: float)
+    +calculate_payroll(): float
+}
+
+class HourlyPolicy{
+    hours_worked: int
+    hour_rate: float
+    +HourlyPolicy(hours_worked: float, hour_rate: int)
+    +calculate_payroll(): float
+}
+
+class CommissionPolicy{
+    commission: int
+    +CommissionPolicy(weekly_salary: float, commission: int)
+    +calculate_payroll(): float
+}
+
+class Manager{
+    +Manager(id: int, name: String, weekly_salary: float)
+}
+
+class Secretary{
+    +Secretary(id: int, name: String, weekly_salary: float)
+}
+
+class SalesPerson{
+   +SalesPerson(id: int, name: String,
+    weekly_salary: float, commision: int)
+}
+
+class FactoryWorker{
+    +FactoryWorker(id: int, name: String,
+    hours_worked: int, hour_rate: float)
+}
+
+class TemporarySecretary{
+    +TemporarySecretary(id: int, name: String,
+    hours_worked: int, hour_rate: float)
+}
+
+Employee <|-- Manager
+Employee <|-- Secretary
+Employee <|-- SalesPerson
+Employee <|-- FactoryWorker
+Employee <|-- TemporarySecretary
+Employee "1" *--> Address
+Manager -down--|> ManagerRole
+Manager -down--|> SalaryPolicy
+Secretary -down--|> SecretaryRole
+Secretary -down--|> SalaryPolicy
+SalesPerson -down--|> SalesRole
+SalesPerson -down--|> CommissionPolicy
+FactoryWorker -down--|> FactoryRole
+FactoryWorker -down--|> HourlyPolicy
+TemporarySecretary -down--|> HourlyPolicy
+TemporarySecretary -down--|> SecretaryRole
+
+PayrollSystem ..> Employee
+ProductivitySystem ..> Employee
+
+@enduml
