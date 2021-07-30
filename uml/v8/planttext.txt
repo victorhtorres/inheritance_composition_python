@@ -1,0 +1,135 @@
+@startuml
+skinparam groupInheritance 3
+title Classes - Inheritance and composition
+
+class PayrollSystem{
+    -_employee_policies: dict<int, PayrollPolicy>
+    +get_policy(employee_id: int): PayrollPolicy
+    +calculate_payroll(employees: List<Employee>): void
+}
+
+PayrollSystem "5"*--down PayrollPolicy
+
+class PayrollPolicy{
+    +hours_worked: int = 0
+    +PayrollPolicy()
+    +track_work(hours: int)
+}
+
+class SalaryPolicy{
+    +weekly_salary: float
+    +SalaryPolicy(weekly_salary: float)
+    +calculate_payroll(): float
+}
+
+PayrollPolicy <|-- SalaryPolicy
+
+class HourlyPolicy{
+    +hour_rate: float
+    +HourlyPolicy(hour_Rate: float)
+    +calculate_payroll(): float
+}
+
+PayrollPolicy <|-- HourlyPolicy
+
+class CommissionPolicy{
+    +commission_per_sale: int
+    +CommissionPolicy(weekly_salary: float, commission_per_sale: int)
+    +commission(): float
+    +calculate_payroll(): float
+}
+
+SalaryPolicy <|-- CommissionPolicy
+
+class ProductivitySystem{
+    -roles: dict<String, Role>
+    +ProductivitySystem()
+    +get_role(role_id: String): Role
+    +track(employees: list<Employees>, hours: int)
+}
+
+
+class ManagerRole{
+    +perform_duties(hours: int): String
+}
+
+ ProductivitySystem o--down ManagerRole
+
+class SecretaryRole{
+    +perform_duties(hours: int): String
+}
+
+ProductivitySystem o--down SecretaryRole
+
+class SalesRole{
+    +perform_duties(hours: int): String
+}
+
+ProductivitySystem o--down SalesRole
+
+class FactoryRole{
+    +perform_duties(hours: int): String
+}
+
+ProductivitySystem o--down FactoryRole
+
+class Employee{
+    +id: int
+    +name: String
+    +address: String
+    -_role: Role
+    -_payroll: PayrollPolicy
+    +work(hours: int): void
+    +calculate_payroll(): float
+}
+
+class AsDictionaryMixin{
+    +to_dict(): dict<Employee>
+    -_represent(value: Employee): dict<Employee>
+    -_def _is_internal(prop: String): Boolean
+}
+
+Employee-right-|>AsDictionaryMixin
+
+Employee -down-> ManagerRole
+Employee -down-> SecretaryRole
+Employee -down-> SalesRole
+Employee -down-> FactoryRole
+
+class EmployeeDatabase{
+    -employees: list<dict>
+    +productivity: ProductivitySystem
+    +payroll: PayrollSystem
+    +employee_addresses: AddressBook
+    +EmployeeDatabase()
+    +employees(): Employee
+    -_create_employee(): Employee
+}
+
+EmployeeDatabase "1"*-down- PayrollSystem
+EmployeeDatabase "1"*-down- ProductivitySystem
+EmployeeDatabase "1"*-down- AddressBook
+EmployeeDatabase -down.> Employee
+
+class Address{
+    +street: String
+    +street2: String
+    +city: String
+    +state: String
+    +zipcode: String
+    +Address(street, city: String, state: String,
+    zipcode: String, street2: String)
+    +__str__(): String
+}
+
+Address -down-|> AsDictionaryMixin
+
+class AddressBook{
+    -_employee_addresses: dict<int, Address>
+    +AddressBook()
+    +get_employee_address(employee_id: int): Address
+}
+
+AddressBook "5"*-down- Address
+
+@enduml

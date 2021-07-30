@@ -39,3 +39,8 @@ First example of composition: Now Employee **has a** Address contact.
 Using the composition to implement a better design that still fits the requirements of the PayrollSystem and the ProductivitySystem.
 
 ![UML diagram class of v7 HR system](./uml/v7/class_diagram.png)
+
+## v8
+Added a mixin class. A mixin is a class that provides methods to other classes but are not considered a base class.
+
+![UML diagram class of v8 HR system](./uml/v8/class_diagram.png)

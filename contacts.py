@@ -1,4 +1,5 @@
-class Address:
+from representations import AsDictionaryMixin
+class Address(AsDictionaryMixin):
     def __init__(self, street, city, state, zipcode, street2=''):
         self.street = street
         self.street2 = street2
