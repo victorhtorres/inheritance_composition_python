@@ -34,3 +34,8 @@ Solving the diamond problem with the division of responsibilities.
 First example of composition: Now Employee **has a** Address contact.
 
 ![UML diagram class of v6 HR system](./uml/v6/class_diagram.png)
+
+## v7
+Using the composition to implement a better design that still fits the requirements of the PayrollSystem and the ProductivitySystem.
+
+![UML diagram class of v7 HR system](./uml/v7/class_diagram.png)
