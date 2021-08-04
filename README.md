@@ -44,3 +44,6 @@ Using the composition to implement a better design that still fits the requireme
 Added a mixin class. A mixin is a class that provides methods to other classes but are not considered a base class.
 
 ![UML diagram class of v8 HR system](./uml/v8/class_diagram.png)
+
+## v9
+Added some design patterns like Singleton and Factory method for still the relationship between Employee and those objects is loosely coupled.
